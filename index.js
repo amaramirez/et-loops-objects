@@ -37,7 +37,7 @@ const dictionaryHTML = dictionary.map(function(item) {
     console.log(item); // See what properties we can access as a part of the item
     // Return them here 
     return `
-        <div class="dictionary-term"
+        <div class="dictionary-term">
             <h2>${item.term}</h2>
             <p>${item.definition}</p>
             <img width='100px' src=${item.image} />
