@@ -1,3 +1,5 @@
+// Building a dictionary website using Javascript and loops
+// We start with an array of objects that has information pertaining to our site:
 const dictionary = [
     {
         term: "apple",
@@ -21,26 +23,36 @@ const dictionary = [
     }
 ];
 
+// First, grab the container element for all the dictionary terms
 const root = document.getElementById("root");
+// Make it something interesting to look at
 root.innerText = "Loading terms...";
 
-const dictionaryHTML = dictionary.map(function({
-    term,
-    definition,
-    image,
-    link
-}) {
+// Here, we are defining an anonymous function instead of creating it beforehand
+// Anonymous functions won't have a name
+const dictionaryHTML = dictionary.map(function(item) {
+    // For every item in the dictionary,
+    // -- create HTML elements that correspond to the item's different properties
     
+    console.log(item); // See what properties we can access as a part of the item
+    // Return them here 
     return `
-        <h2>${term}</h2>
-        <p>${definition}</p>
-        <img width='100px' src=${image} />
+        <div class="dictionary-term"
+            <h2>${item.term}</h2>
+            <p>${item.definition}</p>
+            <img width='100px' src=${item.image} />
+        </div>
         <hr />
     `
 });
 
+// This is an array and will not print properly if we leave it that way
+// Web browsers generally don't know what to do with objects or arrays
+// so the parser will do it's best to convert the array to a string
+// resulting in our elements separated by commas, like in the array
 console.log(dictionaryHTML);
 
+// Use join to reduce all elements into a single string, suitable for sending to our DOM
 root.innerHTML = dictionaryHTML.join("");
 
 // console.log(dictionaryHTML.join(""))
